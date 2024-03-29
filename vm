@@ -1,0 +1,9 @@
+read -p "Disk size: " disk_0
+read -p "Disk name: " disk_n
+qemu-img create -f qcow2 $disk_n.qcow2 $disk_0
+read -p "Ram size (MB) : " ram_0
+read -p "Iso: " iso_0
+read -p "Cpu cores: " core_1
+qemu-system-x86_64 -m $ram_0 -nic user -boot d -cdrom $iso_0 -hda $disk_n.qcow2 -display gtk -enable-kvm -smp $core_1  
+
+echo "When you have installed your Virtual machine run qemu-system-x86_64 -m $ram_0 -nic user -hda $disk_n.qcow2 -smp $core_1"
